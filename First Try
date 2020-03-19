@@ -1,0 +1,36 @@
+int l_motor = 0;
+int r_motor = 3;
+int speed = 60;
+int r_button = 0;
+int l_button = 9;
+int main()
+{
+		while( digital ( r_button) == 0 ) // Robot will go forward until button is pressed. 
+		{ 
+			forward();
+		}	
+    
+		leftTurn();// the robot will do a left turn until the button is pressed. Then all the motors will shut off. 
+    
+	ao();
+  
+	return 0;
+  
+}
+
+// Functions
+
+void forward()
+	{
+		motor(l_motor, speed);
+		motor(r_motor, speed);
+	}
+void leftTurn()
+	{
+		while ( digital ( r_button) == 0)
+		{
+				motor(l_motor, speed);
+				motor(r_motor, speed - 60);
+		}	
+		ao();
+	}	
