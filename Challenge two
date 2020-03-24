@@ -1,0 +1,44 @@
+int l_motor = 0;
+int r_motor = 2;
+int speed = 65;
+int m_range = 1;
+int main()
+{	
+	forward();
+	msleep(500);
+	right();
+	wallstop();
+	dude();
+	return 0;
+
+}
+
+// Functions
+void right()
+{
+	motor(l_motor, speed);
+	motor(r_motor, speed-65);
+	msleep(500);
+}
+
+void left()
+{
+	motor(l_motor, speed-65);
+	motor(r_motor, speed);
+	msleep(1000);
+}
+	
+void forward()
+{
+	motor(l_motor, speed);
+	motor(r_motor, speed);
+}
+
+void wallstop()
+{
+	while ( analog (m_range) < 1008)
+	{
+		forward();
+	}
+		ao();
+}
