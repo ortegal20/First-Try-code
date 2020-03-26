@@ -9,11 +9,11 @@ int fast = 80;
 int slow = 20;
 int main()
 {	
-	void straight();
-	void l_turn();
-	void wallstop();
-	void l_turn();
-	void followine();
+	straight();
+	l_turn();
+	wallstop();
+	l_turn();
+	followine();
 	return 0;
 
 }
@@ -37,7 +37,7 @@ void wallstop()
 {
 	while(analog(m_range) < 1080)
 	{
-		void straight();
+		straight();
 	}
 	ao();
 }
@@ -46,11 +46,11 @@ void followline()
 {
 	while ( analog(l_reflectant) < 830)
 	{
-		void rightveer();
+		rightveer();
 	}
 	while (analog(r_reflectant) == 0 )
 	{
-		void leftveer();
+		leftveer();
 	}
 }
 	
