@@ -7,13 +7,15 @@ int l_reflectant = 5;
 int r_reflectant = 6;
 int fast = 80;
 int slow = 20;
+int right_bump =9;
+int left_bump = 8;
 int main()
 {	
-	straight();
-	l_turn();
-	wallstop();
-	l_turn();
-	followine();
+	void straight();
+	void l_turn();
+	void wallstop();
+	void l_turn();
+	void followine();
 	return 0;
 
 }
@@ -23,7 +25,7 @@ void straight()
 {
 	motor(lmotor, speed);
 	motor(rmotor, speed);
-	msleep(1000);
+	msleep(5000);
 }
 
 void l_turn()
@@ -35,25 +37,27 @@ void l_turn()
 
 void wallstop()
 {
-	while(analog(m_range) < 1080)
-	{
-		straight();
-	}
+	while(analog(m_range) > 400)
+{
+	straight();
+}
 	ao();
 }
 
 void followline()
 {
-	while ( analog(l_reflectant) < 830)
-	{
-		rightveer();
-	}
-	while (analog(r_reflectant) == 0 )
-	{
-		leftveer();
-	}
+	while(digital(left_bump) == 0 || digital(right_bump) == 0)
+{ //WHILE NEITHER THE LEFT OR RIGHT BUMP SENSORS ARE BEING PRESS$ED
+	if( analog(l_reflectant) > 200) //IF THE LEFT TOPHAT IS OVER THE LINE, TURN TO THE RIGHT
+{
+	void rightveer();
 }
-	
+if (analog(l_reflectant) < 200 ) //IF THE LEFT TOPHAT IS OVER THE WHITE TABLE, TURN TO THE LEFT
+{
+	void leftveer();
+}
+}
+}	
 void leftveer()
 {
 	motor(lmotor, slow);
@@ -65,3 +69,6 @@ void rightveer()
 	motor(lmotor, fast);
 	motor(rmotor, slow);
 }
+	
+	
+
