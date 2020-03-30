@@ -1,4 +1,4 @@
- int lmotor = 0;
+int lmotor = 0;
 int rmotor = 2;
 int speed = 65;
 int m_range = 1;
@@ -16,7 +16,7 @@ msleep(2500);
 r_turn();
 wallstop();
 l_turn();
-msleep(1575);
+msleep(1600);
 followline();
 l_turn2();
 msleep(1400);
