@@ -1,0 +1,93 @@
+ int lmotor = 0;
+int rmotor = 2;
+int speed = 65;
+int m_range = 1;
+int l_reflectant = 5;
+int r_reflectant = 6;
+int fast = 80;
+int slow = 20;
+int right_bump =9;
+int left_bump = 8;
+
+int main()
+{
+straight();
+msleep(2500);
+r_turn();
+wallstop();
+l_turn();
+msleep(1575);
+followline();
+l_turn2();
+msleep(1400);
+rightveer();
+l_turn3();
+return 0;
+
+}
+
+// Functions
+int straight()
+{
+motor(lmotor, speed);
+motor(rmotor, speed);
+}
+
+int r_turn()
+{
+	motor(lmotor, speed);
+	motor(rmotor, speed-65);
+	msleep(700);
+}
+
+int l_turn()
+{
+motor(lmotor,speed-50);
+motor(rmotor,speed);
+}
+
+int l_turn2()
+{
+motor(lmotor,speed-65);
+motor(rmotor,speed);
+}
+
+int wallstop()
+{
+	while(analog(m_range) > 650)
+{
+	straight();
+}
+	ao();
+}
+
+int followline()
+{
+	while(digital(left_bump) ==0|| digital(right_bump) ==0)
+	{
+		straight();
+	}
+	ao();
+}
+
+int l_turn3()
+{
+	while ( analog(m_range) > 900)
+	{
+		straight();
+	}
+}
+
+int leftveer()
+{
+	motor(lmotor, slow);
+	motor(rmotor, fast);
+	msleep(1000);
+}
+
+int rightveer()
+{
+	motor(lmotor, fast);
+	motor(rmotor, slow);
+	msleep(500);
+}
