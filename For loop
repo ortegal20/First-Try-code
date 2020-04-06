@@ -14,7 +14,7 @@ int left_bump = 8;
 int main()
 {
 	
-	for(int i= 1; i <= 6; i++)
+	for(int i= 1; i <= 6; i++) // Using for loops gives the programmer more control over the number of times that a specific action is to be done rather than relying on outside instruments such as a light sensor or a distance sensor. 
 	{
 		printf("%d\n", i);
 		 straight();
